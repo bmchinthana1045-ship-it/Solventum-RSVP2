@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Take the Solventum Player Pulse and RSVP for Sports Day 2026.">
+  <meta name="theme-color" content="#01332b">
+  <title>Solventum Player Pulse | Sports Day 2026</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="app-shell screen-intro" id="app">
+    <div class="noise" aria-hidden="true"></div>
+    <header class="topbar">
+      <div class="brand-mark" aria-label="Solventum Sports Day 2026">
+        <img class="brand-logo" src="assets/solventum-logo.png" alt="Solventum">
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-event">sports day<br>2026</span>
+      </div>
+      <div class="event-meta">
+        <span>OCTOBER 10, 2026</span>
+        <span class="meta-separator">|</span>
+        <span>10 A.M. TO 3 P.M.</span>
+        <span class="meta-separator venue-separator">/</span>
+        <span class="event-venue">XLR8 Bengaluru</span>
+      </div>
+    </header>
+
+    <section class="hero page-panel screen-panel" data-screen="intro">
+      <div class="hero-copy">
+        <div class="live-pill"><span></span> RSVP IS OPEN</div>
+        <p class="overline">Your game starts here</p>
+        <h1>SPORTS MODE<span>ACTIVATED<span class="period">.</span></span></h1>
+        <p class="hero-description">Take the 60-second Player Pulse. Discover your sports personality, pick one game and claim your place on the field.</p>
+        <div class="hero-actions">
+          <button class="primary-button" id="start-quiz" type="button">Find My Player Pulse <span aria-hidden="true">↗</span></button>
+          <span class="time-note"><strong>60</strong> seconds<br>to activate</span>
+        </div>
+      </div>
+
+      <div class="hero-graphic" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="player-token token-power"><span>POWER</span><strong>01</strong></div>
+        <div class="player-token token-speed"><span>SPEED</span><strong>02</strong></div>
+        <div class="player-token token-precision"><span>PRECISION</span><strong>03</strong></div>
+        <div class="player-token token-strategy"><span>STRATEGY</span><strong>04</strong></div>
+        <div class="pulse-core"><span>PLAYER</span><strong>PULSE</strong><i>↗</i></div>
+      </div>
+
+      <div class="hero-footer"><span>4 TEAMS</span><i></i><span>5 SPORTS</span><i></i><span>1 CHAMPIONSHIP</span></div>
+    </section>
+
+    <section class="quiz-layout page-panel screen-panel" data-screen="quiz" hidden>
+      <aside class="quiz-sidebar">
+        <p class="overline">Player Pulse</p>
+        <h2>Follow your instinct.</h2>
+        <p>There are no wrong answers—choose what feels most like you.</p>
+        <div class="question-count"><strong id="question-number">01</strong><span>/ 05</span></div>
+        <div class="progress-track"><span id="quiz-progress"></span></div>
+      </aside>
+      <div class="question-card motion-next" id="question-card">
+        <button class="back-button" id="quiz-back" type="button" aria-label="Go to previous question">← Back</button>
+        <p class="question-eyebrow" id="question-eyebrow"></p>
+        <h2 id="question-text"></h2>
+        <div class="answers-grid" id="answers-grid"></div>
+      </div>
+    </section>
+
+    <section class="result-layout page-panel screen-panel" data-screen="result" hidden>
+      <div class="result-card">
+        <div class="result-topline"><span>PLAYER PULSE RESULT</span><span>TYPE / <b data-profile-code></b></span></div>
+        <div class="result-identity" id="result-identity">
+          <div class="identity-code" data-profile-code></div>
+          <div><p>You are the</p><h2 data-profile-title></h2><strong data-profile-kicker></strong></div>
+        </div>
+        <p class="result-description" data-profile-description></p>
+        <div class="recommended-games"><span>Your recommended games</span><div id="recommended-games"></div></div>
+      </div>
+      <div class="result-action">
+        <p class="overline">Pulse detected</p>
+        <h2>Now claim your place.</h2>
+        <p>Select one sport and complete your RSVP. Your personalised Player Card will be ready instantly.</p>
+        <button class="primary-button dark" id="continue-rsvp" type="button">Continue to RSVP <span>↗</span></button>
+        <button class="text-button" id="retake-quiz" type="button">Retake the quiz</button>
+      </div>
+    </section>
+
+    <section class="rsvp-layout page-panel screen-panel" data-screen="rsvp" hidden>
+      <aside class="rsvp-profile" id="rsvp-profile">
+        <button class="back-button" id="rsvp-back" type="button">← Back to result</button>
+        <div class="rsvp-code" data-profile-code></div>
+        <p>Your Player Pulse</p>
+        <h2 data-profile-title></h2>
+        <strong data-profile-kicker></strong>
+        <div class="rsvp-note">Choose one sport to play.</div>
+      </aside>
+
+      <form class="rsvp-form" id="rsvp-form">
+        <div class="form-heading">
+          <p class="overline">Step 2 · RSVP</p>
+          <h2>Claim your spot.</h2>
+          <p>Select one sport and complete your RSVP.</p>
+        </div>
+
+        <div class="field-grid">
+          <label class="field full"><span>Full Name</span><input required autocomplete="name" id="full-name" name="name" maxlength="80" placeholder="e.g. Rahul Sharma"></label>
+          <label class="field"><span>Solventum Email ID</span><input required type="email" autocomplete="email" id="official-email" name="officialEmail" maxlength="120" pattern="^[^\s@]+@solventum\.com$" title="Use your @solventum.com email address" placeholder="name@solventum.com"></label>
+          <label class="field"><span>Business Group/Function</span><select required id="business-group" name="businessGroup"><option value="" disabled selected>Select an option</option><option>MedSurg</option><option>HIS</option><option>GCC</option></select></label>
+        </div>
+
+        <fieldset class="sports-fieldset">
+          <legend>Choose your sport (only one) <span id="sport-count">0/1 selected</span></legend>
+          <p>Select any one sport—our recommendations are only a guide.</p>
+          <div class="sports-grid" id="employee-sports" role="radiogroup" aria-label="Choose your sport"></div>
+        </fieldset>
+
+        <fieldset class="choice-fieldset">
+          <legend>Would you like to bring your spouse who might be interested in playing these sports?</legend>
+          <div class="choice-grid">
+            <label class="radio-option"><input required type="radio" name="bringingSpouse" value="yes"><span>Yes</span></label>
+            <label class="radio-option"><input required type="radio" name="bringingSpouse" value="no"><span>No</span></label>
+          </div>
+        </fieldset>
+        <div class="field-grid conditional-fields" id="spouse-fields" hidden>
+          <label class="field"><span>Spouse's Name</span><input autocomplete="name" id="spouse-name" name="spouseName" maxlength="100" placeholder="Enter spouse's name"></label>
+          <label class="field"><span>Spouse's Sport</span><select id="spouse-sport" name="spouseSport"><option value="" disabled selected>Select a sport</option><option>Football</option><option>Cricket</option><option>Badminton</option><option>Pool</option><option>Throwball</option></select></label>
+        </div>
+
+        <fieldset class="choice-fieldset">
+          <legend>Would you like to bring your kid(s) who might be interested in playing these sports?</legend>
+          <div class="choice-grid">
+            <label class="radio-option"><input required type="radio" name="bringingKids" value="yes"><span>Yes</span></label>
+            <label class="radio-option"><input required type="radio" name="bringingKids" value="no"><span>No</span></label>
+          </div>
+        </fieldset>
+        <div class="field-grid conditional-fields" id="kids-fields" hidden>
+          <label class="field"><span>Kid(s)' Name</span><input id="kids-name" name="kidsName" maxlength="160" placeholder="Enter kid(s)' name"></label>
+          <label class="field"><span>Age group</span><select id="kids-age-group" name="kidsAgeGroup"><option value="" disabled selected>Select an age group</option><option>Below 8</option><option>Above 8</option></select></label>
+          <label class="field full" id="kids-sport-field" hidden><span>Kid(s)' Sport</span><select id="kids-sport" name="kidsSport"><option value="" disabled selected>Select a sport</option><option>Football</option><option>Cricket</option><option>Badminton</option><option>Pool</option><option>Throwball</option></select></label>
+        </div>
+
+        <fieldset class="choice-fieldset lunch-fieldset">
+          <legend>Lunch preference</legend>
+          <div class="choice-grid">
+            <label class="radio-option"><input required type="radio" name="lunchPreference" value="Veg"><span>Veg</span></label>
+            <label class="radio-option"><input required type="radio" name="lunchPreference" value="Non-veg"><span>Non-veg</span></label>
+          </div>
+        </fieldset>
+
+        <label class="honeypot" aria-hidden="true">Website<input id="website" name="website" tabindex="-1" autocomplete="off"></label>
+        <p class="privacy-note">Your RSVP details will be sent to the event team's Google Sheet. Submit only information you are authorised to provide.</p>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+        <button class="primary-button form-submit" id="submit-rsvp" type="submit">Complete RSVP &amp; generate card <span>↗</span></button>
+      </form>
+    </section>
+
+    <section class="success-layout page-panel screen-panel" data-screen="success" hidden>
+      <div class="success-copy">
+        <div class="success-check">✓</div>
+        <p class="overline">RSVP confirmed · <span id="reference"></span></p>
+        <h2>You're officially in the game.</h2>
+        <p>Your personalised Player Card is ready. Download it, share it with your colleagues and start building the Sports Day buzz.</p>
+        <div class="success-actions">
+          <button class="primary-button dark" id="download-card" type="button" disabled>Download Player Card <span>↓</span></button>
+          <button class="secondary-button" id="share-card" type="button" disabled>Share card ↗</button>
+        </div>
+        <div class="next-note"><span>WHAT'S NEXT</span><p>Watch your inbox and Solventum India Viva Engage page for team reveals, fixtures and the final event-day checklist.</p></div>
+      </div>
+      <div class="card-preview-wrap">
+        <div class="card-shadow"></div>
+        <img class="generated-card" id="generated-card" alt="Your Solventum Player Card" hidden>
+        <div class="card-loading" id="card-loading">Generating your card…</div>
+      </div>
+    </section>
+
+    <noscript><p class="noscript-message">JavaScript is required to take the Player Pulse and submit an RSVP.</p></noscript>
+  </main>
+</body>
+</html>
