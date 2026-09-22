@@ -389,7 +389,29 @@ async function submitRsvp(event) {
   submitButton.disabled = true;
   submitButton.firstChild.textContent = "Confirming your RSVP… ";
   try {
-   await ensureBackend();
+   try {
+  await postRegistration(payload);
+
+  try {
+    await waitForSubmission(reference);
+  } catch (statusError) {
+    console.warn(
+      "RSVP was submitted, but confirmation was unavailable.",
+      statusError
+    );
+  }
+
+  state.reference = reference;
+  document.querySelector("#reference").textContent = reference;
+  showScreen("success");
+
+  await generateAndDisplayCard(
+    payload.name,
+    state.personality,
+    [state.selectedSport],
+    reference
+  );
+}
 await postRegistration(payload);
 
 // Google Sheets may save the RSVP even when the confirmation request times out.
