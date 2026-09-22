@@ -1,7 +1,7 @@
 "use strict";
 
 // After deploying google-apps-script/Code.gs as a Web App, paste its /exec URL here.
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwsp0tCz87cPhaklCo-XAF6v4Shz4q4Q9OSidNFPRiCbmlDORHtIlzhc8hJEGTZZoyw/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxbVpi6i9YmsXpheS9lRgldi3x1nSwoKLioxdsanYTXhM1QttKGCNJprBZAWoFpid5MFQ/exec";
 const BACKEND_VERSION = "solventum-rsvp-standalone-v1";
 
 const questions = [
