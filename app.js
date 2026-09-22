@@ -388,7 +388,6 @@ async function submitRsvp(event) {
 
   submitButton.disabled = true;
   submitButton.firstChild.textContent = "Confirming your RSVP… ";
-  try {
    try {
   await postRegistration(payload);
 
